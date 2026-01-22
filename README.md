@@ -18,17 +18,23 @@ EventNest is a **decentralized event management platform** that revolutionizes h
 
 
 ## Update in wave 5
-NFT Ticket QR Check-In
+**NFT Ticket QR Check-In**
 Tech: ERC-721, QR Code, Next.js API, Smart Contract validation
 
-Multi-Crypto Ticket Payments
+**Multi-Crypto Ticket Payments**
 Tech: SideShift API, Polygon, Ethers.js, Wagmi
 
-Fraud-Proof Ticket Verification
-Tech: Blockchain ownership check, On-chain validation
+**Fraud-Proof Ticket Verification
+**Tech: Blockchain ownership check, On-chain validation
 
-Ticket Resale with Royalties
+**Ticket Resale with Royalties**
 Tech: ERC-721 + ERC-2981, Marketplace Smart Contract
+
+**Organizer Analytics Dashboard**
+Tech: MongoDB, Aggregation, Chart.js, Next.js
+
+**AI Event Discovery & Search**
+Tech: Google Gemini AI, Semantic Search, Next.js API
 
 Organizer Analytics Dashboard
 Tech: MongoDB, Aggregation, Chart.js, Next.js
