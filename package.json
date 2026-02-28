@@ -79,14 +79,17 @@
   },
   "devDependencies": {
     "@jridgewell/trace-mapping": "^0.3.31",
+    "@nomicfoundation/hardhat-ethers": "^4.0.5",
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.3",
+    "@nomicfoundation/hardhat-verify": "^3.0.11",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^15.5.7",
-    "hardhat": "^3.1.0",
+    "hardhat": "^2.22.0",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5"
