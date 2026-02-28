@@ -2,7 +2,7 @@
 
 **Live Demo**: [https://eventnestty.vercel.app/](https://eventnestty.vercel.app/) 🚀
 
-A Web3-powered event ticketing platform built on **Polygon Amoy** that uses NFT tickets, accepts **any cryptocurrency via SideShift AI**, and eliminates ticket fraud through blockchain verification.
+A Web3-powered event ticketing platform built on **Polygon Mainnet** that uses NFT tickets, accepts **any cryptocurrency via SideShift AI**, and eliminates ticket fraud through blockchain verification.
 
 ---
 
@@ -24,8 +24,8 @@ Tech: ERC-721, QR Code, Next.js API, Smart Contract validation
 **Multi-Crypto Ticket Payments**
 Tech: SideShift API, Polygon, Ethers.js, Wagmi
 
-**Fraud-Proof Ticket Verification
-**Tech: Blockchain ownership check, On-chain validation
+**Fraud-Proof Ticket Verification**
+Tech: Blockchain ownership check, On-chain validation
 
 **Ticket Resale with Royalties**
 Tech: ERC-721 + ERC-2981, Marketplace Smart Contract
@@ -36,16 +36,20 @@ Tech: MongoDB, Aggregation, Chart.js, Next.js
 **AI Event Discovery & Search**
 Tech: Google Gemini AI, Semantic Search, Next.js API
 
-Organizer Analytics Dashboard
-Tech: MongoDB, Aggregation, Chart.js, Next.js
-
-AI Event Discovery & Search
-Tech: Google Gemini AI, Semantic Search, Next.js API
+## Update in wave 6 — Polygon Mainnet Deployment
+**Mainnet Deployment**
+- Smart contract deployed to Polygon Mainnet (Chain ID: 137)
+- Contract Address: `0x5B2c51753B6367d19cd3D43420eDF5777E39fd85`
+- Wagmi/Web3 config switched from Polygon Amoy to Polygon mainnet
+- All API routes updated to use `POLYGON_MAINNET_RPC`
+- Purchase flow fixed: walletAddress, transactionHash, tokenId, shiftId sent to purchase API
+- createEvent now includes royaltyBps (2.5% default)
+- Env vars aligned: PINATA_SECRET_API_KEY fallback, NEXT_PUBLIC_POLYGON_RPC
 
 ## 🌟 Key Features
 
 ### 🎟️ NFT Ticketing
-- Every ticket is an **ERC-721 NFT** minted on Polygon Amoy
+- Every ticket is an **ERC-721 NFT** minted on Polygon Mainnet
 - **Fraud-proof**: Blockchain verification ensures no fake/duplicate tickets
 - **Transferable**: Send tickets to friends or resell them
 - **Collectible**: Keep as digital memorabilia in your wallet
@@ -77,7 +81,7 @@ Tech: Google Gemini AI, Semantic Search, Next.js API
 - No centralized server dependencies
 
 ### ⚡ Low Transaction Fees
-- Built on **Polygon Amoy** testnet (production uses Polygon PoS)
+- Built on **Polygon Mainnet**
 - ~$0.01 per transaction
 - Fast confirmation times (2-5 seconds)
 
@@ -87,7 +91,7 @@ Tech: Google Gemini AI, Semantic Search, Next.js API
 
 | Category | Technology |
 |----------|------------|
-| **Blockchain** | Polygon Amoy Testnet (ERC-721 NFTs) |
+| **Blockchain** | Polygon Mainnet (ERC-721 NFTs) |
 | **Smart Contract** | Solidity, Hardhat, OpenZeppelin |
 | **Payment Gateway** | SideShift AI API (multi-crypto) |
 | **Decentralized Storage** | Pinata IPFS |
@@ -224,18 +228,21 @@ bun install
 ### 3. Environment Variables
 Create `.env` file:
 ```env
-# Blockchain
+# Blockchain (Polygon Mainnet)
 PRIVATE_KEY=0x...                              # Wallet private key (for deployment)
-POLYGON_AMOY_RPC=https://polygon-amoy.g.alchemy.com/v2/YOUR_KEY
+POLYGON_MAINNET_RPC=https://polygon-mainnet.g.alchemy.com/v2/YOUR_KEY
+NEXT_PUBLIC_POLYGON_MAINNET_RPC=...            # Same RPC for frontend
+NEXT_PUBLIC_POLYGON_RPC=...                    # Alias for deployment guide compatibility
+NEXT_PUBLIC_CONTRACT_ADDRESS=0x...             # Deployed contract address
 NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=...       # From cloud.walletconnect.com
 NEXT_PUBLIC_WC_PROJECT_ID=...                  # Same as above
 
 # Database
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/...
 
-# IPFS Storage
+# IPFS Storage (Pinata accepts PINATA_SECRET_KEY or PINATA_SECRET_API_KEY)
 PINATA_API_KEY=...                             # From pinata.cloud
-PINATA_SECRET_KEY=...
+PINATA_SECRET_API_KEY=...                      # Or PINATA_SECRET_KEY
 
 # AI Search
 GEMINI_API_KEY=...                             # From makersuite.google.com/app/apikey
@@ -248,9 +255,9 @@ SIDESHIFT_API=https://sideshift.ai/api/v2     # Base URL
 
 ### 4. Deploy Smart Contract
 ```bash
-npx hardhat run scripts/deploy.js --network polygonAmoy
+npm run deploy:mainnet
 ```
-Copy contract address to `src/lib/contractABI.ts`
+Copy contract address to `.env` as `NEXT_PUBLIC_CONTRACT_ADDRESS` and `src/lib/contractABI.ts`
 
 ### 5. Run Development Server
 ```bash
@@ -262,7 +269,7 @@ npm run dev
 
 ## 🔐 Smart Contract Details
 
-**Contract Address**: `0x2Ce258CF5A43C2AeeD7833C741F5372B68FE2e0c` (Polygon Amoy)
+**Contract Address**: `0x5B2c51753B6367d19cd3D43420eDF5777E39fd85` (Polygon Mainnet)
 
 ### Key Functions:
 ```solidity
@@ -372,9 +379,9 @@ vercel --prod
 **Live URL**:https://eventnestty.vercel.app/
 
 ### Smart Contract (Polygon Mainnet)
-1. Update `hardhat.config.js` to use `polygon` network
-2. Fund deployer wallet with MATIC
-3. Run: `npx hardhat run scripts/deploy.js --network polygon`
+1. Fund deployer wallet with ~0.5+ MATIC for gas
+2. Run: `npm run deploy:mainnet`
+3. Add `NEXT_PUBLIC_CONTRACT_ADDRESS` to `.env` and Vercel
 4. Verify on Polygonscan: `npx hardhat verify --network polygon CONTRACT_ADDRESS`
 
 ### Environment Variables (Vercel)
@@ -475,13 +482,13 @@ Add all `.env` variables to Vercel dashboard under **Settings → Environment Va
 5. **User-Friendly**: Web3 UX without sacrificing simplicity
 
 ### Production-Ready Checklist
-- [x] Smart contract deployed to Polygon Amoy
+- [x] Smart contract deployed to Polygon Mainnet
 - [x] Frontend deployed to Vercel
 - [x] MongoDB connected
 - [x] IPFS storage configured
 - [x] SideShift API integrated
 - [x] AI search implemented
-- [ ] Smart contract audit (recommended for mainnet)
+- [ ] Smart contract audit (recommended)
 - [ ] Mobile app (future)
 
 ---

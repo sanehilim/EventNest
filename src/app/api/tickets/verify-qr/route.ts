@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify on-chain ownership using smart contract
-    const rpcUrl = process.env.POLYGON_AMOY_RPC || 'https://rpc-amoy.polygon.technology';
+    const rpcUrl = process.env.POLYGON_MAINNET_RPC || 'https://polygon-rpc.com';
     const provider = new ethers.JsonRpcProvider(rpcUrl);
     const contract = new ethers.Contract(CONTRACT_ADDRESS, EVENT_TICKET_ABI, provider);
 

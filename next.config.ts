@@ -5,6 +5,10 @@ import path from "node:path";
 const loaderPath = require.resolve('orchids-visual-edits/loader.js');
 
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_CONTRACT_ADDRESS: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
+    NEXT_PUBLIC_POLYGON_RPC: process.env.NEXT_PUBLIC_POLYGON_RPC || process.env.NEXT_PUBLIC_POLYGON_MAINNET_RPC,
+  },
   images: {
     remotePatterns: [
       {

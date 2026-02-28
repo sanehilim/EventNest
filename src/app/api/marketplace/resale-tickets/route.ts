@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     // For now, return empty array as placeholder
     // This would need to be implemented with event indexing or The Graph
 
-    const rpcUrl = process.env.POLYGON_AMOY_RPC || 'https://rpc-amoy.polygon.technology';
+    const rpcUrl = process.env.POLYGON_MAINNET_RPC || 'https://polygon-rpc.com';
     const provider = new ethers.JsonRpcProvider(rpcUrl);
     const contract = new ethers.Contract(CONTRACT_ADDRESS, EVENT_TICKET_ABI, provider);
 

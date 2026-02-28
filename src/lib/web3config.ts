@@ -1,6 +1,6 @@
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
 import { cookieStorage, createStorage } from 'wagmi';
-import { polygonAmoy } from 'wagmi/chains';
+import { polygon } from 'wagmi/chains';
 
 export const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID!;
 
@@ -15,7 +15,7 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886'],
 };
 
-export const chains = [polygonAmoy] as const;
+export const chains = [polygon] as const;
 
 export const wagmiConfig = defaultWagmiConfig({
   chains,
@@ -27,11 +27,11 @@ export const wagmiConfig = defaultWagmiConfig({
   }),
 });
 
-export const POLYGON_AMOY_CONFIG = {
-  chainId: 80002,
-  name: 'Polygon Amoy',
-  rpcUrl: process.env.POLYGON_AMOY_RPC || 'https://rpc-amoy.polygon.technology',
-  blockExplorer: 'https://amoy.polygonscan.com',
+export const POLYGON_MAINNET_CONFIG = {
+  chainId: 137,
+  name: 'Polygon',
+  rpcUrl: process.env.NEXT_PUBLIC_POLYGON_RPC || process.env.NEXT_PUBLIC_POLYGON_MAINNET_RPC || 'https://polygon-rpc.com',
+  blockExplorer: 'https://polygonscan.com',
   nativeCurrency: {
     name: 'POL',
     symbol: 'POL',

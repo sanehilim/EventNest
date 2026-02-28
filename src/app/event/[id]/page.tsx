@@ -170,14 +170,34 @@ export default function EventDetailPage() {
       });
       
       toast.info('Waiting for blockchain confirmation...');
-      await tx.wait();
+      const receipt = await tx.wait();
+      
+      let tokenId: string | undefined;
+      if (receipt?.logs) {
+        const iface = (contract as any).interface;
+        const ticketMintedTopic = iface.getEvent('TicketMinted')?.topicHash;
+        const log = receipt.logs.find((l: { topics: string[] }) => l.topics[0] === ticketMintedTopic);
+        if (log) {
+          try {
+            const parsed = iface.parseLog({ topics: log.topics as string[], data: log.data });
+            tokenId = parsed?.args?.tokenId?.toString();
+          } catch {
+            // Fallback: API will use generated tokenId
+          }
+        }
+      }
 
       toast.success('🎉 Ticket purchased successfully!');
 
       await fetch(`/api/events/${event._id}/purchase`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ buyer: address }),
+        body: JSON.stringify({
+          walletAddress: address,
+          transactionHash: tx.hash,
+          tokenId,
+          shiftId,
+        }),
       });
 
       fetchEvent();

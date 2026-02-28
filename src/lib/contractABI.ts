@@ -592,5 +592,5 @@ export const EVENT_TICKET_ABI = [
   }
 ] as const;
 
-// Contract address on Polygon Amoy testnet
-export const CONTRACT_ADDRESS = '0x2Ce258CF5A43C2AeeD7833C741F5372B68FE2e0c';
+// Contract address - Polygon Mainnet (env) or fallback
+export const CONTRACT_ADDRESS = (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0x5B2c51753B6367d19cd3D43420eDF5777E39fd85') as `0x${string}`;

@@ -1,10 +1,10 @@
-import "@nomicfoundation/hardhat-toolbox";
-import 'dotenv/config';
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv/config");
 
 /** @type import('hardhat/config').HardhatUserConfig */
-export default {
+module.exports = {
   solidity: {
-    version: "0.8.19",
+    version: "0.8.20",
     settings: {
       optimizer: {
         enabled: true,
