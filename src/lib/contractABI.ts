@@ -345,6 +345,11 @@ export const EVENT_TICKET_ABI = [
         "internalType": "string",
         "name": "metadataURI",
         "type": "string"
+      },
+      {
+        "internalType": "uint96",
+        "name": "royaltyBps",
+        "type": "uint96"
       }
     ],
     "name": "createEvent",

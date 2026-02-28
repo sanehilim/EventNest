@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(bytes);
     
     const PINATA_API_KEY = process.env.PINATA_API_KEY;
-    const PINATA_SECRET_KEY = process.env.PINATA_SECRET_KEY;
+    const PINATA_SECRET_KEY = process.env.PINATA_SECRET_KEY || process.env.PINATA_SECRET_API_KEY;
 
     if (!PINATA_API_KEY || !PINATA_SECRET_KEY) {
       console.error('Missing Pinata credentials');

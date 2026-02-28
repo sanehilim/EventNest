@@ -22,16 +22,17 @@ async function main() {
   console.log("Deployment successful!");
   console.log("===========================================");
   console.log("Contract Address:", contractAddress);
-  console.log("Network: Polygon Amoy Testnet");
+  const network = process.env.HARDHAT_NETWORK || 'unknown';
+  console.log("Network:", network === 'polygon' ? 'Polygon Mainnet' : network);
   console.log("Deployer:", deployer.address);
   console.log("===========================================\n");
 
   console.log("Update the following files:");
   console.log("1. src/lib/contractABI.ts - Update CONTRACT_ADDRESS");
-  console.log("2. .env - Add CONTRACT_ADDRESS=" + contractAddress);
+  console.log("2. .env - Add NEXT_PUBLIC_CONTRACT_ADDRESS=" + contractAddress);
 
   console.log("\nVerify contract with:");
-  console.log(`npx hardhat verify --network amoy ${contractAddress}`);
+  console.log(`npx hardhat verify --network ${network} ${contractAddress}`);
 }
 
 main()

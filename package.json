@@ -7,7 +7,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "compile": "npx hardhat compile",
+    "deploy:mainnet": "npx hardhat run scripts/deploy.ts --network polygon"
   },
   "dependencies": {
     "@coinbase/wallet-sdk": "^4.3.7",

@@ -116,7 +116,8 @@ export default function CreateEventPage() {
         mongoEventId, // Use MongoDB ID as eventId
         parseInt(formData.totalTickets), // maxSupply
         ticketPriceInWei, // ticketPrice in wei
-        imageUrl || '' // metadataURI
+        imageUrl || '', // metadataURI
+        250 // royaltyBps (2.5%)
       );
 
       console.log('Blockchain transaction submitted:', tx.hash);

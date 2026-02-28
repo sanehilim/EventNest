@@ -18,6 +18,11 @@ export default {
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
       chainId: 80002,
     },
+    polygon: {
+      url: process.env.POLYGON_MAINNET_RPC || "https://polygon-rpc.com",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 137,
+    },
     hardhat: {
       chainId: 31337,
     },
@@ -25,6 +30,7 @@ export default {
   etherscan: {
     apiKey: {
       polygonAmoy: process.env.POLYGONSCAN_API_KEY || "",
+      polygon: process.env.POLYGONSCAN_API_KEY || "",
     },
   },
   paths: {
