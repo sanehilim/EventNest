@@ -1,6 +1,6 @@
 # EventNest - Decentralized Event Ticketing Platform
 
-**Live Demo**: [https://eventnestty.vercel.app/](https://eventnestty.vercel.app/) 🚀
+**Live Demo**: [https://eventnestty.vercel.app/](https://evnetetst.vercel.app/) 🚀
 
 A Web3-powered event ticketing platform built on **Polygon Mainnet** that uses NFT tickets, accepts **any cryptocurrency via SideShift AI**, and eliminates ticket fraud through blockchain verification.
 
